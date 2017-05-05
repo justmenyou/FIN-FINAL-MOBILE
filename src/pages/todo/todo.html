@@ -1,0 +1,46 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Todo</ion-title>
+         <ion-buttons end>
+      <button ion-button icon-only [navPush]="newtodoPage">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content> </ion-refresher-content>
+  </ion-refresher> 
+<ion-list>
+  <ion-item-sliding *ngFor="let todo of todos">
+    <ion-item>
+      <ion-avatar *ngIf="todo.status == 1" item-left>
+        <img src="../assets/img/correct.jpg">
+      </ion-avatar>
+      <ion-avatar *ngIf="todo.status == 0" item-left>
+        <ion-icon name="alert" style="font-size: 45px"></ion-icon>
+      </ion-avatar>
+      <h2>{{todo.name}}</h2>
+    </ion-item>
+    <ion-item-options side="left">
+      <button (click)="done(todo)" ion-button color="secondary">
+        <ion-icon name="checkmark-circle"></ion-icon>
+        Done
+      </button>
+      <button (click)="undone(todo)" ion-button color="primary">
+        <ion-icon name="remove-circle"></ion-icon>
+        Undone
+      </button>
+    </ion-item-options>
+    <ion-item-options side="right">
+      <button (click)="removeToDo(todo)" ion-button color="danger">
+        <ion-icon name="trash"></ion-icon>
+        Remove
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+</ion-content>

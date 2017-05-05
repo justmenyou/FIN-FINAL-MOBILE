@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+   
+    <ion-title>New Trips</ion-title>
+     <ion-buttons end>
+      <button ion-button icon-only (click)="saveNewTrip()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+    <ion-input type="text" [(ngModel)]="newtrip['name']" placeholder="Name"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-datetime displayFormat="MMM DD, h:mm A" [(ngModel)]="newtrip['date']" ></ion-datetime>
+  </ion-item>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="newtrip['suggestedTripsKey']">
+    <ion-list-header>
+      Suggestion Trips
+    </ion-list-header>
+
+    <ion-item>
+      <ion-icon name="close" item-left></ion-icon>
+      <ion-label>None</ion-label>
+      <ion-radio (click)="onselectSuggestTrip('')" checked="true" value="none"></ion-radio>
+    </ion-item>
+
+    <ion-item *ngFor="let suggesttrip of suggesttrips">
+      <ion-icon name="cafe" item-left></ion-icon>
+      <ion-label>{{suggesttrip.name}}</ion-label>
+      <ion-radio (click)="onselectSuggestTrip(suggesttrip)" value="{{suggesttrip.keyString}}"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

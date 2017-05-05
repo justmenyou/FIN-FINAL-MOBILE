@@ -1,0 +1,56 @@
+<!--
+  Generated template for the PackageList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Packing List</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only [navPush]="newitemPage">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content> </ion-refresher-content>
+  </ion-refresher> 
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let packing of packings">
+      <ion-item>
+          <ion-avatar *ngIf="packing.status == 1" item-left>
+        <img src="../assets/img/correct.jpg">
+        </ion-avatar>
+        <ion-avatar *ngIf="packing.status == 0" item-left>
+          <ion-icon name="alert" style="font-size: 45px"></ion-icon>
+        </ion-avatar>
+        <h2>{{packing.itemName}}</h2>
+        <p>{{packing.quantity}}</p>
+      </ion-item>
+      
+      <ion-item-options side="right">
+         <button (click)="taked(packing)" ion-button color="secondary">
+          <ion-icon name="checkmark-circle"></ion-icon>
+          Taked
+        </button>
+        <button  (click)="untake(packing)" ion-button color="primary">
+          <ion-icon name="remove-circle"></ion-icon>
+          Untake
+        </button>
+        <button  (click)="removeItem(packing)" ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+  
+    </ion-item-sliding>
+   
+   
+  </ion-list>
+</ion-content>

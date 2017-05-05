@@ -1,0 +1,53 @@
+
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-title>Trip Detail</ion-title>
+   
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+
+  <ion-card-header>
+    {{trip.name}}
+  </ion-card-header>
+
+  <ion-card-content>
+     <img src="../assets/img/809.jpg" alt="">
+  </ion-card-content>
+
+</ion-card>
+
+
+<ion-card  [navPush]="todoPage"> 
+  <ion-item>
+    <ion-icon  name="checkmark"> </ion-icon>
+    To do
+  </ion-item>
+</ion-card>
+<ion-card [navPush]="packagePage"> 
+  <ion-item>
+    <ion-icon name="shirt"></ion-icon>
+ <ion-icon md="md-checkmark"></ion-icon>
+    Packing List
+  </ion-item>
+</ion-card>
+<ion-card [navPush]="photoPage"> 
+  <ion-item>
+    <ion-icon name="camera"></ion-icon>
+ <ion-icon md="md-checkmark"></ion-icon>
+    Photo
+  </ion-item>
+</ion-card>
+<ion-card [navPush]="notePage"> 
+  <ion-item>
+    <ion-icon name="paper"></ion-icon>
+    Note
+  </ion-item>
+</ion-card>
+</ion-content>

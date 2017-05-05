@@ -1,0 +1,31 @@
+<!--
+  Generated template for the PhotoPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>My trip photo</ion-title>
+     <ion-buttons end>
+      <button ion-button icon-only (click)="newphoto()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+  <ion-row>
+    <ion-col *ngFor="let photo of photos" col-6 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+       <img src="http://1-dot-fin-planer.appspot.com/getFileContent?blobkey={{photo.photoKey}}"/>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

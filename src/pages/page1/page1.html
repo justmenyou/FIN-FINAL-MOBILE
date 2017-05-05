@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Trips</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only [navPush]="newtripsPage">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content> </ion-refresher-content>
+  </ion-refresher> 
+
+  <ion-list> 
+
+     <ion-item-sliding *ngFor="let trip of trips" >
+      <ion-item (click)="goToTripDetail(trip)">
+         
+        <ion-avatar item-left>
+          <ion-icon name="bonfire" style="font-size: 45px"></ion-icon>
+        </ion-avatar>
+        <h2>{{trip.name}}</h2>
+        <p>{{trip.date.substring(0, 10)}}</p>
+      </ion-item>
+      
+      <ion-item-options side="right">
+        <button  (click)="removeTrip(trip)" ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+  
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right (click)="logout()">
+      <button ion-fab><ion-icon name="log-out"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
+
+
+

@@ -1,0 +1,47 @@
+<!--
+  Generated template for the Newitem page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Newitem</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="saveNewItem()">
+       <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+</ion-header>
+<ion-content padding>
+
+ <ion-list>
+    <ion-item>
+    <ion-input type="text" [(ngModel)]="newItem['itemName']" placeholder="Item Name"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-input type="number" [(ngModel)]="newItem['quantity']" placeholder="Quantity"></ion-input>
+  </ion-item>
+  </ion-list>
+  <ion-list radio-group>
+  <ion-list-header>
+    Suggestion Item
+  </ion-list-header>
+
+  <ion-item>
+    <ion-icon name="close" item-left></ion-icon>
+    <ion-label>None</ion-label>
+    <ion-radio checked="true" value="none"></ion-radio>
+  </ion-item>
+
+  <ion-item *ngFor="let suggestitem of suggestitems">
+    <ion-icon name="cube" item-left></ion-icon>
+    <ion-label>{{suggestitem.itemName}}</ion-label>
+    <ion-radio (click)="onselectSuggestItem(suggestitem)" value="{{suggestitem.keyString}}"></ion-radio>
+  </ion-item>
+
+</ion-list>
+
+</ion-content>
